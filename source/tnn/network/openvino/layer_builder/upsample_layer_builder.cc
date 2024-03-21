@@ -45,11 +45,11 @@ Status UpsampleOVLayerBuilder::Build() {
 
     ngraph::op::v4::Interpolate::InterpolateAttrs attrs;
     if (paramlist->align_corners) {
-        attrs.coordinate_transformation_mode = ngraph::op::v4::Interpolate::CoordinateTransformMode::align_corners;
+        attrs.coordinate_transformation_mode = ngraph::op::v4::Interpolate::CoordinateTransformMode::ALIGN_CORNERS;
     } else {
-        attrs.coordinate_transformation_mode = ngraph::op::v4::Interpolate::CoordinateTransformMode::half_pixel;
+        attrs.coordinate_transformation_mode = ngraph::op::v4::Interpolate::CoordinateTransformMode::HALF_PIXEL;
     }
-    attrs.nearest_mode = ngraph::op::v4::Interpolate::NearestMode::floor;
+    attrs.nearest_mode = ngraph::op::v4::Interpolate::NearestMode::FLOOR;
     // attrs.align_corners = paramlist->align_corners;
     // if (paramlist->align_corners) 
     //     attrs.coordinate_transformation_mode = ngraph::op::v3::Interpolate::CoordinateTransformMode::align_corners;
@@ -61,11 +61,11 @@ Status UpsampleOVLayerBuilder::Build() {
         ngraph::element::Type_t::i64, ngraph::Shape{input_node->get_output_shape(0).size() - 2}, axes);
 
     if (paramlist->mode == 1) {
-        attrs.mode = ngraph::op::v4::Interpolate::InterpolateMode::nearest; //"nearest";
+        attrs.mode = ngraph::op::v4::Interpolate::InterpolateMode::NEAREST; //"nearest";
     } else if (paramlist->mode == 2) {
-        attrs.mode = ngraph::op::v4::Interpolate::InterpolateMode::linear;  //"linear";
+        attrs.mode = ngraph::op::v4::Interpolate::InterpolateMode::LINEAR;  //"linear";
     } else if (paramlist->mode == 3){
-        attrs.mode = ngraph::op::v4::Interpolate::InterpolateMode::cubic;   //"cubic";
+        attrs.mode = ngraph::op::v4::Interpolate::InterpolateMode::CUBIC;   //"cubic";
     } else {
         return Status(TNNERR_MODEL_ERR, "Error: Upsample dont support resize type");
     }
@@ -77,7 +77,7 @@ Status UpsampleOVLayerBuilder::Build() {
     upsampleScaleShape.push_back(1.0);
     upsampleScaleShape.push_back(1.0);
     if (paramlist->dims.size() != 0) {
-        attrs.shape_calculation_mode = ngraph::op::v4::Interpolate::ShapeCalcMode::sizes;
+        attrs.shape_calculation_mode = ngraph::op::v4::Interpolate::ShapeCalcMode::SIZES;
         if (paramlist->dims[0] != 0 && paramlist->dims[1] != 0) {
             upsampleShape[0] = paramlist->dims[1];
             upsampleShape[1] = paramlist->dims[0];
@@ -85,7 +85,7 @@ Status UpsampleOVLayerBuilder::Build() {
             return Status(TNNERR_MODEL_ERR, "Error: Upsample size error");
         }
     } else {
-        attrs.shape_calculation_mode = ngraph::op::v4::Interpolate::ShapeCalcMode::scales;
+        attrs.shape_calculation_mode = ngraph::op::v4::Interpolate::ShapeCalcMode::SCALES;
         upsampleScaleShape[0] = paramlist->scales.at(1);
         upsampleScaleShape[1] = paramlist->scales.at(0);
     }

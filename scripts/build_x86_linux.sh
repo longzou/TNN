@@ -52,7 +52,7 @@ clone_openvino() {
         git clone --recursive https://github.com/openvinotoolkit/openvino.git
     fi
     cd openvino
-    git reset --hard 18e83a2
+    git checkout 2023.3.0
     git submodule update --init --recursive
     #sed -i '152 i /*' inference-engine/src/mkldnn_plugin/nodes/reduce.cpp
     #sed -i '157 i */' inference-engine/src/mkldnn_plugin/nodes/reduce.cpp

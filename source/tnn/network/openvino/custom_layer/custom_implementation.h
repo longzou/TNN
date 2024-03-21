@@ -326,7 +326,7 @@ public:
 #define DECLARE_CUSTOM_OP(type)                                                                                        \
     class Custom##type##Op : public TNN_NS::CustomOpenvinoOp {                                                         \
     public:                                                                                                            \
-        static constexpr ngraph::NodeTypeInfo type_info{"Custom" #type, 0};                                            \
+        static constexpr ngraph::NodeTypeInfo type_info{"Custom" #type, 0, NULL};                                            \
         const ngraph::NodeTypeInfo& get_type_info() const {                                                            \
             return type_info;                                                                                          \
         }                                                                                                              \
