@@ -12,6 +12,6 @@ add_definitions(-mavx2 -mavx -mfma)
 if(NOT DEFINED ENV{OPENVINO_ROOT_DIR})
     message(FATAL_ERROR "not defined environment variable:OPENVINO_ROOT_DIR")
 endif()
-
+message("OPENVINO_ROOT_DIR" $ENV{OPENVINO_ROOT_DIR})
 include_directories($ENV{OPENVINO_ROOT_DIR}/include/ie)
 include_directories($ENV{OPENVINO_ROOT_DIR}/include)
