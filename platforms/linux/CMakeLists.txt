@@ -49,7 +49,7 @@ if(TNN_OPENVINO_ENABLE)
     # set_target_properties(inference_engine_lp_transformations PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/runtime/lib/intel64/${LIB_PFX}inference_engine_lp_transformations${LIB_EXT})
     # set_target_properties(MKLDNNPlugin PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/runtime/lib/intel64/${LIB_PFX}MKLDNNPlugin.so)
     # set_target_properties(ngraph PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/runtime/lib/${LIB_PFX}ngraph${LIB_EXT})
-    set_target_properties(tbb PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/runtime/3rdparty/tbb/lib/libtbb.so.2)
+    set_target_properties(tbb PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/runtime/3rdparty/tbb/lib/libtbb.so)
     # set_target_properties(pugixml PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/lib/${LIB_PFX}pugixml.a)
     
     target_link_libraries(TNN inference_engine tbb)
