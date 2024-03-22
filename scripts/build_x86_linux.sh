@@ -140,7 +140,7 @@ copy_openvino_libraries() {
     #cp ${OPENVINO_INSTALL_PATH}/deployment_tools/inference_engine/lib/intel64/plugins.xml ${BUILD_DIR}/
     #cp ${OPENVINO_INSTALL_PATH}/deployment_tools/inference_engine/lib/intel64/libMKLDNNPlugin.so ${TNN_INSTALL_DIR}/lib/
     #cp ${OPENVINO_INSTALL_PATH}/deployment_tools/inference_engine/external/tbb/lib/* ${TNN_INSTALL_DIR}/lib/
-    cp ${OPENVINO_INSTALL_PATH}/runtime/3rdparty/tbb/lib/* ${TNN_INSTALL_DIR}/lib/
+    cp -r ${OPENVINO_INSTALL_PATH}/runtime/3rdparty/tbb/lib/* ${TNN_INSTALL_DIR}/lib/
 
 
     if [ "${OPENVINO_BUILD_SHARED}" = "ON" ]
