@@ -52,7 +52,7 @@ if(TNN_OPENVINO_ENABLE)
     set_target_properties(tbb PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/runtime/3rdparty/tbb/lib/libtbb.so.2)
     # set_target_properties(pugixml PROPERTIES IMPORTED_LOCATION $ENV{OPENVINO_ROOT_DIR}/lib/${LIB_PFX}pugixml.a)
     
-    target_link_libraries(TNN inference_engine inference_engine_legacy inference_engine_transformations inference_engine_lp_transformations ngraph tbb)
+    target_link_libraries(TNN inference_engine ngraph tbb)
 endif()
 
 if(TNN_CUDA_ENABLE)
